@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class SwitchControl : MonoBehaviour
 {
-    public GameObject menuPanel;
+    public GameObject menu;
+    public GameObject levels;
+    public GameObject shop;
+    public GameObject settings;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +22,24 @@ public class SwitchControl : MonoBehaviour
     {
         
     }
+    public void Menu()
+    {
+        menu.SetActive(true);
+    }
     public void Play()
     {
-        menuPanel.SetActive(false);
+        menu.SetActive(false);
+        levels.SetActive(true);
     }
-    public void QuitGame()
+    public void Shop()
     {
-        Application.Quit();
+        menu.SetActive(false);
+        shop.SetActive(true);
     }
+    public void Settings()
+    {
+        menu.SetActive(false);
+        settings.SetActive(true);
+    }
+
 }
