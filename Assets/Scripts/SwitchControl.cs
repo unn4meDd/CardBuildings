@@ -41,7 +41,7 @@ public class SwitchControl : MonoBehaviour
         menu.SetActive(false);
         settingsMenu.SetActive(true);
     }
-    public void EquitGame()
+    public void QuitGame()
     {
         Application.Quit();
     }
