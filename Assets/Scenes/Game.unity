@@ -163,7 +163,6 @@ GameObject:
   - component: {fileID: 24518307}
   - component: {fileID: 24518306}
   - component: {fileID: 24518305}
-  - component: {fileID: 24518308}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -232,7 +231,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 24518306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1908771244}
+        m_MethodName: StopHorizontalMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &24518306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,20 +280,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24518303}
   m_CullTransparentMesh: 0
---- !u!114 &24518308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24518303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e82d0455c33dbe48a32cf73bce39abc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tabsDirection: 0
-  moveCard: {fileID: 1908771244}
 --- !u!1001 &254956843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1399,7 +1395,6 @@ MonoBehaviour:
   movePosition: {x: -94.6, y: 0, z: 0}
   moveSpeed: 0.2
   moveProgress: 0
-  pressedButton: {fileID: 0}
 --- !u!1 &1953792866
 GameObject:
   m_ObjectHideFlags: 0

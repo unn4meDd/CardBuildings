@@ -11,8 +11,8 @@ public class MoveCard : MonoBehaviour
     Vector3 startPosition;
     Vector3 offset;
     private CardMechanics cardMechanics;
-    public PressedButton pressedButton;
     // Start is called before the first frame update
+    private bool needHorizontalMove = true;
     void Start()
     {
         startPosition = transform.position;
@@ -21,7 +21,10 @@ public class MoveCard : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(needHorizontalMove)
+        {
+            Move();
+        }
     }
     public void Move()
     {
@@ -29,8 +32,8 @@ public class MoveCard : MonoBehaviour
         offset = movePosition * moveProgress;
         transform.position = startPosition + offset;
     }
-    public void PutCard()
+    public void StopHorizontalMove()
     {
-        offset = Vector3.zero;
+        needHorizontalMove = false;
     }
 }
