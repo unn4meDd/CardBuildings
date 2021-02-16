@@ -815,7 +815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &853146294
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1616,8 +1616,8 @@ MonoBehaviour:
   moveSpeed: 0.2
   rotatingSpeed: 0.5
   moveProgress: 0
-  buttonStopCard: {fileID: 0}
-  buttonRotation: {fileID: 0}
+  buttonStopCard: {fileID: 24518303}
+  buttonRotation: {fileID: 853146293}
 --- !u!1 &1953792866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,8 +1648,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardHouse1: {fileID: 956973489}
-  buttonStopCard: {fileID: 0}
-  buttonRotation: {fileID: 0}
   cards:
   - {fileID: 655489879}
   - {fileID: 735252137}
