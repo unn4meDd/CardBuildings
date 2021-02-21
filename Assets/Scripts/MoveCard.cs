@@ -6,16 +6,21 @@ using UnityEngine;
 public class MoveCard : MonoBehaviour
 {
     [SerializeField] Vector3 movePosition;
+    [SerializeField] Vector3 movePosition2;
     [SerializeField] float moveSpeed = 0.2f;
     [SerializeField] float rotatingSpeed = 0.5f;
     [SerializeField] [Range(0,1)] float moveProgress;
     Vector3 startPosition;
     Vector3 offset;
+    Vector3 offset2;
     private CardMechanics cardMechanics;
-    public GameObject buttonStopCard;
-    public GameObject buttonRotation;
+    public GameObject buttonStopHorizontalMove;
+    public GameObject buttonRotationMove;
+    public GameObject buttonStopVerticalMove;
+
     // Start is called before the first frame update
     private bool needHorizontalMove = true;
+    private bool needVerticalMove = false;
     private bool needRotatingMove = false;
     void Start()
     {
@@ -23,7 +28,7 @@ public class MoveCard : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(needHorizontalMove)
         {
@@ -32,6 +37,10 @@ public class MoveCard : MonoBehaviour
         if(needRotatingMove == true)
         {
             MoveRotation();
+        }
+        if(needVerticalMove == true)
+        {
+            MoveVertical();
         }
     }
     public void MoveHorizontal()
@@ -44,15 +53,30 @@ public class MoveCard : MonoBehaviour
     {
         transform.Rotate(new Vector3(0, 0, 90) * Time.deltaTime * rotatingSpeed);
     }
+    public void MoveVertical()
+    {
+        moveProgress = Mathf.PingPong(Time.time * moveSpeed, 1);
+        offset2 = movePosition2 * moveProgress;
+        transform.position = startPosition + offset + offset2;
+    }
     public void StopHorizontalMove()
     {
         needHorizontalMove = false;
         needRotatingMove = true;
-        buttonStopCard.SetActive(false);
-        buttonRotation.SetActive(true);
+        buttonStopHorizontalMove.SetActive(false);
+        buttonRotationMove.SetActive(true);
     }
     public void StopRotationMove()
     {
         needRotatingMove = false;
+        needVerticalMove = true;
+        buttonStopHorizontalMove.SetActive(false);
+        buttonRotationMove.SetActive(false);
+        buttonStopVerticalMove.SetActive(true);
+
+    }
+    public void StopVerticalMove()
+    {
+        needVerticalMove = false;
     }
 }
