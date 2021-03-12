@@ -5,6 +5,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class MoveCard : MonoBehaviour
 {
+    public GameObject[] cards = new GameObject[7];
+    public GameObject[] cardsBorder = new GameObject[7];
+    public GameObject movingCardExample;
     [SerializeField] Vector3 movePosition;
     [SerializeField] Vector3 movePosition2;
     [SerializeField] float moveSpeed = 0.2f;
@@ -15,32 +18,42 @@ public class MoveCard : MonoBehaviour
     Vector3 offset2;
     private CardMechanics cardMechanics;
     public GameObject buttonStopHorizontalMove;
-    public GameObject buttonRotationMove;
+    public GameObject buttonStopRotationMove;
     public GameObject buttonStopVerticalMove;
-
-    // Start is called before the first frame update
-    private bool needHorizontalMove = true;
+    private bool needHorizontalMove = false;
     private bool needVerticalMove = false;
     private bool needRotatingMove = false;
+
+    // Start is called before the first frame update
     void Start()
     {
         startPosition = transform.position;
+        needHorizontalMove = true;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(needHorizontalMove)
+        if(needHorizontalMove == true)
         {
             MoveHorizontal();
+            buttonStopHorizontalMove.SetActive(true);
+            buttonStopRotationMove.SetActive(false);
+            buttonStopVerticalMove.SetActive(false);
         }
         if(needRotatingMove == true)
         {
             MoveRotation();
+            buttonStopHorizontalMove.SetActive(false);
+            buttonStopRotationMove.SetActive(true);
+            buttonStopVerticalMove.SetActive(false);
         }
         if(needVerticalMove == true)
         {
             MoveVertical();
+            buttonStopHorizontalMove.SetActive(false);
+            buttonStopRotationMove.SetActive(false);
+            buttonStopVerticalMove.SetActive(true);
         }
     }
     public void MoveHorizontal()
@@ -63,20 +76,23 @@ public class MoveCard : MonoBehaviour
     {
         needHorizontalMove = false;
         needRotatingMove = true;
-        buttonStopHorizontalMove.SetActive(false);
-        buttonRotationMove.SetActive(true);
+        needVerticalMove = false;
     }
     public void StopRotationMove()
     {
         needRotatingMove = false;
+        needVerticalMove = false;
         needVerticalMove = true;
-        buttonStopHorizontalMove.SetActive(false);
-        buttonRotationMove.SetActive(false);
-        buttonStopVerticalMove.SetActive(true);
-
     }
     public void StopVerticalMove()
     {
+        needRotatingMove = false;
         needVerticalMove = false;
+        Destroy(GetComponent<MoveCard>());
+        Instantiate(movingCardExample);
+        buttonStopHorizontalMove.SetActive(true);
+        buttonStopRotationMove.SetActive(false);
+        buttonStopVerticalMove.SetActive(false);    
+        needHorizontalMove = true;
     }
 }
