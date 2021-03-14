@@ -23,37 +23,37 @@ public class MoveCard : MonoBehaviour
     private bool needHorizontalMove = false;
     private bool needVerticalMove = false;
     private bool needRotatingMove = false;
-
     // Start is called before the first frame update
     void Start()
     {
+        // buttonStopHorizontalMove = GameObject.Find("BSHM").GetComponent<GameObject>();
+        // buttonStopRotationMove = GameObject.Find("BSRM").GetComponent<GameObject>();
+        // buttonStopVerticalMove = GameObject.Find("BSVM").GetComponent<GameObject>();
         startPosition = transform.position;
         needHorizontalMove = true;
+        UpdateActiveBtn();
     }
-
+    private void UpdateActiveBtn()
+    {
+        buttonStopHorizontalMove.SetActive(needHorizontalMove);
+        buttonStopRotationMove.SetActive(needRotatingMove);
+        buttonStopVerticalMove.SetActive(needVerticalMove);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        print(needHorizontalMove + " " + needRotatingMove + " " + needVerticalMove);
         if(needHorizontalMove == true)
         {
             MoveHorizontal();
-            buttonStopHorizontalMove.SetActive(true);
-            buttonStopRotationMove.SetActive(false);
-            buttonStopVerticalMove.SetActive(false);
         }
         if(needRotatingMove == true)
         {
             MoveRotation();
-            buttonStopHorizontalMove.SetActive(false);
-            buttonStopRotationMove.SetActive(true);
-            buttonStopVerticalMove.SetActive(false);
         }
         if(needVerticalMove == true)
         {
             MoveVertical();
-            buttonStopHorizontalMove.SetActive(false);
-            buttonStopRotationMove.SetActive(false);
-            buttonStopVerticalMove.SetActive(true);
         }
     }
     public void MoveHorizontal()
@@ -77,12 +77,14 @@ public class MoveCard : MonoBehaviour
         needHorizontalMove = false;
         needRotatingMove = true;
         needVerticalMove = false;
+        UpdateActiveBtn();
     }
     public void StopRotationMove()
     {
         needRotatingMove = false;
         needVerticalMove = false;
         needVerticalMove = true;
+        UpdateActiveBtn();
     }
     public void StopVerticalMove()
     {
@@ -90,9 +92,7 @@ public class MoveCard : MonoBehaviour
         needVerticalMove = false;
         Destroy(GetComponent<MoveCard>());
         Instantiate(movingCardExample);
-        buttonStopHorizontalMove.SetActive(true);
-        buttonStopRotationMove.SetActive(false);
-        buttonStopVerticalMove.SetActive(false);    
         needHorizontalMove = true;
+        UpdateActiveBtn();
     }
 }

@@ -106,14 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5360371dfbb227b4faecd1a3ce0ad2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingCards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   cards:
   - {fileID: 0}
   - {fileID: 0}
@@ -136,9 +128,6 @@ MonoBehaviour:
   moveSpeed: 0.2
   rotatingSpeed: 0.5
   moveProgress: 0
-  buttonStopHorizontalMove: {fileID: 8653930764220711638, guid: 5aa53262ba8af4e41b89eb9723190a6a,
-    type: 3}
-  buttonStopRotationMove: {fileID: 806375706254198642, guid: 177686d71d288f540adfe821aa5008df,
-    type: 3}
-  buttonStopVerticalMove: {fileID: 3317818698892401331, guid: 8edbb33a000ae0e49908836d9fa77059,
-    type: 3}
+  buttonStopHorizontalMove: {fileID: 0}
+  buttonStopRotationMove: {fileID: 0}
+  buttonStopVerticalMove: {fileID: 0}
