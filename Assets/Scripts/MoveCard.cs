@@ -82,24 +82,28 @@ public class MoveCard : MonoBehaviour
     public void StopHorizontalMove()
     {
         print("StopHorizontalMove");
-        needHorizontalMove = false;
-        needRotatingMove = true;
-        needVerticalMove = false;
+        Change_needHorMove(false, "from StopHorizontalMove");
+        Change_needRotMove(true, "from StopHorizontalMove");
+        // needHorizontalMove = false;
+        // needRotatingMove = true;
+        // needVerticalMove = false;
     }
     public void StopRotationMove()
     {
         print("StopRotationMove");
-        needRotatingMove = false;
-        needVerticalMove = false;
-        needVerticalMove = true;
+        Change_needRotMove(false, "from StopRotationMove");
+        Change_needVertMove(true, "from StopRotationMove");
+    //     needRotatingMove = false;
+    //     needVerticalMove = false;
+    //     needVerticalMove = true;
     }
     public void StopVerticalMove()
     {
         print("StopVerticalMove");
-        needRotatingMove = false;
-        needVerticalMove = false;
+        Change_needRotMove(false, "from StopRotationMove");
+        Change_needVertMove(false, "from StopRotationMove");
         var newCard = Instantiate(movingCardExample);
         Destroy(newCard.GetComponent<MoveCard>());
-        needHorizontalMove = true;
+        Change_needHorMove(true, "from StopVerticalMove");
     }
 }

@@ -21,20 +21,17 @@ public class ButtonsControl : MonoBehaviour
         print(moveCard.needHorizontalMove + " " + moveCard.needRotatingMove + " " + moveCard.needVerticalMove);
         if(moveCard.needHorizontalMove == true)
         {
-            moveCard.Change_needHorMove(true, "horMove");
-            // moveCard.StopHorizontalMove();
+            moveCard.StopHorizontalMove();
         }
         print(moveCard.needHorizontalMove + " " + moveCard.needRotatingMove + " " + moveCard.needVerticalMove);
         if(moveCard.needRotatingMove == true)
         {
-            moveCard.Change_needRotMove(true, "rotMove");
-            // moveCard.StopRotationMove();
+            moveCard.StopRotationMove();
         }
         print(moveCard.needHorizontalMove + " " + moveCard.needRotatingMove + " " + moveCard.needVerticalMove);
         if(moveCard.needVerticalMove == true)
         {
-            moveCard.Change_needVertMove(true, "vertMove");
-            // moveCard.StopVerticalMove();
+            moveCard.StopVerticalMove();
         }
         print(moveCard.needHorizontalMove + " " + moveCard.needRotatingMove + " " + moveCard.needVerticalMove);
     }
